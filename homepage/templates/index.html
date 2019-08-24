@@ -1,0 +1,46 @@
+<%inherit file="base.htm" />
+
+<%block name="content">
+	<table id="records-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Total Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            %for x in records:
+            <tr>
+                <td>${x.id}</td>
+                <td>${x.start_time}</td>
+                <td>${x.end_time}</td>
+                <td>${(x.end_time-x.start_time).total_seconds()}</td>
+            </tr>
+            %endfor
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Total Time</th>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="content">
+        <form action="/index.celery_execution" method="GET">
+        	<h4>Celery Execution of Task</h4>
+        	<input type="number" name="num" min="1">
+    		<p>The number selected will be how many seconds it takes to complete the record creation process.</p>
+        	<button type="submit">Submit</button>
+        </form>
+        <form action="/index.http_execution" method="GET">
+        	<h4>Execution of Task Within HTTP Request</h4>
+        	<input type="number" name="num" min="1">
+        	<p>The number selected will be how many seconds it takes to complete the record creation process.</p>
+        	<button type="submit">Submit</button>
+        </form>
+    </div>
+</%block>
