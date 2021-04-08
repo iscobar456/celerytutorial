@@ -3,7 +3,7 @@ billiard==3.6.1.0
 celery==4.3.0
 cffi==1.12.3
 dj-database-url==0.5.0
-Django==2.2.4
+Django==2.2.20
 django-heroku==0.3.1
 django-mako-plus==5.11.2
 gevent==1.4.0
